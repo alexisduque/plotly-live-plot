@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <script src="plotly.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script type="application/javascript">
+        function rand() {
+            return Math.random();
+        }
+        document.addEventListener('DOMContentLoaded', initPlot);
+        var interval;
+
+        function initPlot() {
+            Plotly.plot('graph', [{
+                y: [1, 2, 3].map(rand)
+            }, {
+                y: [1, 2, 3].map(rand)
+            }, {
+                y: [1, 2, 3].map(rand)
+            }]);
+            /*
+            interval = setInterval(function() {
+
+                Plotly.extendTraces('graph', {
+                    y: [
+                        [rand()],
+                        [rand()],
+                        [rand()]
+                    ]
+
+                }, [0, 1, 2])
+
+                if (cnt === 100) clearInterval(interval);
+            }, 300);
+            */
+        }
+
+        var socket = io.connect('http://' + document.location.host);
+        var timeout;
+        socket.on('message', function(msg) {
+            Plotly.extendTraces('graph', {
+                y: [
+                    [msg.r],
+                    [msg.g],
+                    [msg.b]
+                ],
+
+            }, [0, 1, 2])
+        });
+
+        var cnt = 0;
+    </script>
+</head>
+
+<body>
+    <div id="graph"></div>
+</body>
+
+</html>

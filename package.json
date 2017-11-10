@@ -1,0 +1,17 @@
+{
+  "name": "INSemBEDed-web",
+  "version": "0.0.1",
+  "description": "INSemBEDed",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "./deploy.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "csv": "~0.3.6",
+    "express": "~3.4.8",
+    "mathjs": "^1.2.0",
+    "smoothie": "~1.19.0",
+    "socket.io": "~0.9.16"
+  }
+}
