@@ -8,6 +8,7 @@
         document.addEventListener('DOMContentLoaded', initPlot);
         var interval;
 
+        // CHANGE THAT TO MATCH YOUR INPUT FORMAT
         function initPlot() {
             var layout = {
                 height: 800,
@@ -24,6 +25,8 @@
 
         var socket = io.connect('http://' + document.location.host);
         var timeout;
+
+        // CHANGE THAT TO MATCH YOUR INPUT FORMAT
         socket.on('message', function(msg) {
             Plotly.extendTraces('graph', {
                 y: [

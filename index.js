@@ -12,7 +12,7 @@ app.get('/socket-io.js', function(req, res) {
     res.sendfile('./node_modules/socket.io-client/dist/socket.io.js');
 });
 
-// Data input
+// CHANGE THAT TO MATCH YOUR INPUT FORMAT
 var csvStream = csv();
 csvStream.from.options({ columns: ['r', 'g', 'b', 't'] })
 csvStream.transform(function(row) {
