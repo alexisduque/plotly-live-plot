@@ -16,10 +16,10 @@ app.get('/socket-io.js', function(req, res) {
 var csvStream = csv();
 csvStream.from.options({ columns: ['r', 'g', 'b', 't'] })
 csvStream.transform(function(row) {
-    row.r = parseInt(row.r);
-    row.g = parseInt(row.g);
-    row.b = parseInt(row.b);
-    row.t = parseInt(row.t);
+    row.r = parseFloat(row.r);
+    row.g = parseFloat(row.g);
+    row.b = parseFloat(row.b);
+    row.t = parseFloat(row.t);
     io.sockets.emit('message', row);
     return null;
 });
