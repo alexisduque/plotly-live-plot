@@ -3,9 +3,11 @@ Plotly Live Plot
 
 Live plot from any input (serial port, file, ...) using [Plotly](https://plot.ly) graph library and node :chart_with_upwards_trend:.
 
-Useful tool to debug IoT devices sensors  :smiley:
+Useful tool to debug IoT devices sensors.  :smiley:
 
 *PR are welcome* :smirk:
+
+![Demo](doc/demo.gif)
 
 ## Requirement
 
@@ -22,14 +24,16 @@ $ npm install
 
 ## Usage
 
-``$ { DATA_SOURCE } > node .``
+```sh
+$ DATA_SOURCE | node .
+````
 
 And open `http://localhost:8080`
 
-### Example
+### Example with Pyserial
 
 ```sh
-$ tail -f ~/vlc-rgb-decoder/cmake-build-debug/data.txt | node .
+$ miniterm.py /dev/ttyUSB0 9600 | node .
 ```
 
 ### Test Mode
