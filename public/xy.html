@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <script src="plotly.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script type="application/javascript">
+        document.addEventListener('DOMContentLoaded', initPlot);
+        var interval;
+
+        // CHANGE THAT TO MATCH YOUR INPUT FORMAT
+        function initPlot() {
+            var layout = {
+                height: 800,
+                width: 1400
+            }
+            Plotly.plot('graph', [{
+                y: [1],
+                x: [5],
+                type: 'scatter',
+                mode: 'markers'
+            }], layout);
+        }
+
+        var socket = io.connect('http://' + document.location.host);
+        var timeout;
+
+        // CHANGE THAT TO MATCH YOUR INPUT FORMAT
+        socket.on('message', function(msg) {
+            Plotly.extendTraces('graph', {
+                x: [
+                    [msg.b]
+                ],
+                y: [
+                    [msg.g]
+                    //[msg.g],
+                    //[msg.b]
+                ],
+
+            }, [0])
+        });
+
+        var cnt = 0;
+    </script>
+</head>
+
+<body>
+    <div id="graph"></div>
+</body>
+
+</html>
